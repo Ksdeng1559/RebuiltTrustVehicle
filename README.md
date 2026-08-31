@@ -4,16 +4,17 @@ A trust-first marketplace and operating platform for rebuilt-status vehicles in 
 
 ## Mission
 
-Create a safer, more transparent market for ICBC rebuilt vehicles by combining verified vehicle information, controlled seller access, warranty options, financing pathways, and standardized disclosure.
+Create a safer, more transparent market for ICBC rebuilt vehicles by combining verified vehicle information, controlled seller access, warranty options, financing pathways, standardized disclosure, and AI-assisted buyer engagement.
 
 ## Core Model
 
-RebuiltTrustVehicle is designed around four trust layers:
+RebuiltTrustVehicle is designed around five trust layers:
 
 1. **Verified Sellers** — authorized used-car dealers form the primary seller network.
 2. **Private Seller Network** — individuals may participate under tighter transaction and volume rules.
 3. **Vehicle Trust Record** — VIN, rebuilt status, inspection evidence, disclosure, repair history, and listing evidence are tied to the vehicle record.
 4. **Transaction Protection** — eligible warranty, financing, documentation, and risk controls are integrated into the buying journey.
+5. **AI Engagement Layer** — a website Buyer Concierge, in-house AI Sales Agent, and AI DM Response Agent help buyers understand vehicles, qualify demand, follow up leads, and route sensitive decisions to humans.
 
 ## Current Commercial Direction
 
@@ -23,7 +24,8 @@ RebuiltTrustVehicle is designed around four trust layers:
 - Secondary channel: private sellers / small-volume buyers
 - Warranty direction: Lubrico Warranty, subject to vehicle eligibility and contract confirmation
 - Financing: integrated vehicle-financing workflow
-- Platform objective: increase buyer confidence, dealer conversion, and liquidity for rebuilt vehicles
+- AI engagement: website chatbot, internal sales agent, and DM response agent
+- Platform objective: increase buyer confidence, dealer conversion, response speed, and liquidity for rebuilt vehicles
 
 ## Project Wiki
 
@@ -32,6 +34,7 @@ RebuiltTrustVehicle is designed around four trust layers:
 - [Product Vision & Trust Model](docs/PRODUCT-VISION.md)
 - [User Roles & Access Model](docs/USER-ROLES.md)
 - [Marketplace Workflows](docs/MARKETPLACE-WORKFLOWS.md)
+- [AI Agent Layer](docs/AI-AGENTS.md)
 
 ### Trust, Warranty & Risk
 - [Rebuilt Vehicle Trust Framework](docs/TRUST-FRAMEWORK.md)
@@ -54,4 +57,4 @@ RebuiltTrustVehicle is designed around four trust layers:
 
 A rebuilt title should not be hidden or minimized. The platform should make the vehicle's rebuilt history explicit, understandable, evidence-backed, and commercially manageable.
 
-The product is therefore not simply a classifieds marketplace. It is a **trust and transaction infrastructure layer for rebuilt vehicles**.
+The product is therefore not simply a classifieds marketplace. It is a **trust, transaction, and AI-assisted sales infrastructure layer for rebuilt vehicles**.
