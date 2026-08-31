@@ -4,7 +4,7 @@
 
 RebuiltTrustVehicle is a BC-focused marketplace and transaction platform for rebuilt-status vehicles. The platform addresses the central market failure in rebuilt vehicles: buyers often face incomplete history, inconsistent disclosure, limited warranty availability, financing friction, and uncertainty about the quality of repairs.
 
-The platform increases trust by standardizing evidence, restricting seller access, integrating warranty and financing pathways, and creating a persistent vehicle trust record tied to the VIN.
+The platform increases trust by standardizing evidence, restricting seller access, integrating warranty and financing pathways, creating a persistent vehicle trust record tied to the VIN, and adding governed AI engagement supported by Interpretive Context Methodology (ICM) and an Open Knowledge Framework (OKF).
 
 ## 2. Problem
 
@@ -28,7 +28,7 @@ Key seller concerns include:
 
 ## 3. Product Vision
 
-Create the most trusted marketplace for rebuilt-status vehicles by converting rebuilt history from an information disadvantage into a transparent, evidence-backed vehicle record.
+Create the most trusted marketplace for rebuilt-status vehicles by converting rebuilt history from an information disadvantage into a transparent, evidence-backed vehicle record supported by context-aware AI and durable institutional knowledge.
 
 ## 4. Target Market
 
@@ -52,6 +52,9 @@ Private sellers and small-volume participants may participate under stricter con
 - Warranty Partner
 - Inspection / Repair Evidence Provider
 - Compliance / Review Operator
+- AI Buyer Concierge
+- AI Sales Agent
+- AI DM Response Agent
 
 ## 6. Core Product Modules
 
@@ -112,7 +115,50 @@ Controls may include:
 - explicit seller-type labeling.
 
 ### 6.8 Buyer Journey
-Search → vehicle trust record → compare → warranty information → financing option → inquiry / reservation → due diligence → purchase documentation.
+Search → vehicle trust record → compare → AI concierge / inquiry → warranty information → financing option → qualification → appointment / reservation → due diligence → purchase documentation.
+
+### 6.9 AI Engagement Layer
+The platform includes three governed AI roles:
+
+- Website Buyer Concierge;
+- In-House AI Sales Agent;
+- AI DM Response Agent.
+
+These agents share the same approved knowledge, CRM context, VIN records, dealer context, policy rules, and audit layer. They must not operate from isolated or conflicting knowledge stores.
+
+### 6.10 Interpretive Context Methodology (ICM)
+ICM governs how the platform assembles the smallest correct context for a specific agent task or workflow step.
+
+Each material AI workflow must declare:
+- objective;
+- required inputs;
+- permitted knowledge sources;
+- allowed tools;
+- facts that must not be inferred;
+- completion criteria;
+- confidence threshold;
+- verification rules;
+- escalation conditions;
+- output artifact;
+- human approval requirement where applicable.
+
+ICM context may include the current VIN, verified facts, seller disclosures, inspection evidence, dealer policies, buyer intent, CRM history, warranty status, financing status, consent, and applicable compliance rules.
+
+### 6.11 Open Knowledge Framework (OKF)
+OKF provides the approved, portable knowledge layer used across AI agents, administrators, and future integrations.
+
+Approved knowledge should be represented as linked concepts with one authoritative home per material fact. Reusable SOPs and playbooks should be separated from client/dealer-specific facts.
+
+The knowledge lifecycle is:
+
+Source ingestion → Draft concept → Verification / human review → Publish → Log / lifecycle update.
+
+Provenance, verification state, and timestamps must not be invented.
+
+### 6.12 Artifact-Based Handoffs and Learning
+Material agent handoffs should use structured artifacts containing evidence, findings, unresolved questions, confidence, and next action.
+
+Operational outcomes may generate candidate lessons, but agent output must not automatically become approved knowledge. Material lessons require validation and, where appropriate, human approval before being promoted to OKF.
 
 ## 7. Trust Framework
 
@@ -126,6 +172,8 @@ The platform should distinguish between:
 
 **Platform-derived status** — indicates evidence completeness or workflow status; it must not be represented as a guarantee of vehicle quality.
 
+**AI-generated interpretation** — contextual guidance or summary produced from approved inputs; it must remain distinguishable from verified facts.
+
 ## 8. Business Model
 
 Potential revenue streams:
@@ -137,7 +185,9 @@ Potential revenue streams:
 - inspection services;
 - promoted listings;
 - trust certification/document package fees;
-- dealer software tools.
+- dealer software tools;
+- AI sales-assistant subscription or usage tier;
+- premium lead-response / CRM automation features.
 
 ## 9. Warranty Reserve / Self-Funded Protection Research
 
@@ -158,10 +208,16 @@ MVP must include:
 - vehicle photo gallery;
 - search and filters;
 - buyer inquiry;
+- website Buyer Concierge;
+- CRM lead capture and conversation logging;
+- human handoff queue;
+- ICM context contracts for AI workflows;
+- approved knowledge retrieval layer;
+- clear separation of draft/inferred versus verified knowledge;
 - warranty eligibility workflow/status;
 - financing lead/application handoff;
 - admin review dashboard;
-- audit log for material listing changes.
+- audit log for material listing and AI actions.
 
 ## 11. Non-Functional Requirements
 
@@ -174,6 +230,11 @@ MVP must include:
 - Clear disclosure provenance
 - Scalable multi-tenant dealer structure
 - API-ready architecture
+- Selective context loading
+- One authoritative home per material fact
+- Portable, model-neutral knowledge representation
+- Human-gated consequential actions
+- Reconstructable agent handoffs and decisions
 
 ## 12. Proposed Technical Direction
 
@@ -191,7 +252,13 @@ Object/document storage: Supabase Storage or compatible object storage.
 
 Analytics/enrichment: DuckDB/MotherDuck where useful.
 
-AI/model routing, if introduced: OpenRouter or equivalent abstraction.
+AI/model routing: OpenRouter or equivalent abstraction.
+
+Context layer: ICM-based context service that selects task-specific authoritative inputs.
+
+Knowledge layer: OKF-style approved knowledge bundle / knowledge service linked to source records and lifecycle metadata.
+
+CRM: shared lead, conversation, consent, and sales-activity store connected to the AI agents.
 
 ## 13. Compliance Principles
 
@@ -201,6 +268,9 @@ AI/model routing, if introduced: OpenRouter or equivalent abstraction.
 - Financing is subject to lender approval.
 - Seller type must be clearly shown.
 - Platform trust indicators must not be represented as government, ICBC, mechanical, or insurance certification unless actually issued by that party.
+- AI must not convert inference into verified fact.
+- High-risk AI actions must support human review or takeover.
+- Knowledge provenance must remain available where source data exists.
 
 ## 14. Success Metrics
 
@@ -208,10 +278,17 @@ AI/model routing, if introduced: OpenRouter or equivalent abstraction.
 - active rebuilt inventory;
 - percentage of listings with complete evidence;
 - buyer inquiry rate;
+- AI first-response time;
+- lead capture rate;
+- qualified-lead rate;
+- human handoff rate;
 - finance application rate;
 - warranty attachment rate;
 - listing-to-sale conversion;
 - days-to-sale versus baseline;
+- stale-lead reactivation rate;
+- AI response QA / correction rate;
+- percentage of approved knowledge with valid provenance;
 - dispute rate;
 - repeat dealer usage;
 - buyer trust / satisfaction score.
@@ -219,3 +296,5 @@ AI/model routing, if introduced: OpenRouter or equivalent abstraction.
 ## 15. Product Principle
 
 RebuiltTrustVehicle should win by making the transaction more transparent, not by trying to make the rebuilt history disappear.
+
+Its AI should not merely remember conversations. It should interpret the right context for the current task, execute within explicit boundaries, verify consequential outputs, and convert approved learning into durable institutional knowledge.
