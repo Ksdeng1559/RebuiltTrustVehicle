@@ -47,6 +47,23 @@ Private Buyer Network
 
 The strategic model is therefore not only **vehicle listing → wait for buyer**. It also supports **buyer joins → defines desired vehicle → AI matches current or incoming inventory → dealer receives qualified opportunity**.
 
+## Implementation Direction
+
+The first build should use a modular-monolith architecture with clear domain boundaries:
+
+- **Web:** Vite + React + TypeScript
+- **Identity:** Clerk + application-level roles/organization membership
+- **System of Record:** Supabase/Postgres
+- **Documents:** Supabase Storage or compatible object storage
+- **API:** authenticated `/api/v1` service with provider adapters and webhooks
+- **Worker:** matching, notifications and asynchronous agent workflows where required
+- **AI Routing:** OpenRouter abstraction
+- **Analytics:** DuckDB/MotherDuck when analytical workloads justify them
+
+The MVP north-star loop is:
+
+**Approved dealer inventory → VIN trust record → Private Buyer demand → explainable match → inquiry/opportunity → financing/warranty handoff → appointment → transaction.**
+
 ## Project Wiki
 
 ### Product
@@ -58,21 +75,27 @@ The strategic model is therefore not only **vehicle listing → wait for buyer**
 - [AI Agent Layer](docs/AI-AGENTS.md)
 - [ICM + OKF Context & Knowledge Architecture](docs/ICM-OKF.md)
 
+### Implementation
+- [Implementation Blueprint](docs/IMPLEMENTATION-BLUEPRINT.md)
+- [Application Database Schema](docs/DATABASE-SCHEMA.md)
+- [API Roadmap](docs/API-ROADMAP.md)
+- [Build Roadmap](docs/BUILD-ROADMAP.md)
+- [System Architecture](docs/ARCHITECTURE.md)
+- [Data Model](docs/DATA-MODEL.md)
+- [Integrations](docs/INTEGRATIONS.md)
+
 ### Trust, Warranty & Risk
 - [Rebuilt Vehicle Trust Framework](docs/TRUST-FRAMEWORK.md)
 - [Warranty Strategy](docs/WARRANTY.md)
 - [Financing Strategy](docs/FINANCING.md)
 - [Risk & Reserve Model](docs/RISK-RESERVE-MODEL.md)
 
-### Platform
-- [System Architecture](docs/ARCHITECTURE.md)
-- [Data Model](docs/DATA-MODEL.md)
-- [Integrations](docs/INTEGRATIONS.md)
+### Operations
 - [Dealer Onboarding](docs/DEALER-ONBOARDING.md)
 
 ### Governance
 - [Compliance & Disclosure](docs/COMPLIANCE.md)
-- [Roadmap](docs/ROADMAP.md)
+- [Product Roadmap](docs/ROADMAP.md)
 - [Decision Log](docs/DECISION-LOG.md)
 
 ## Guiding Principle
