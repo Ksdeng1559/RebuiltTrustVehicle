@@ -64,6 +64,16 @@ The MVP north-star loop is:
 
 **Approved dealer inventory → VIN trust record → Private Buyer demand → explainable match → inquiry/opportunity → financing/warranty handoff → appointment → transaction.**
 
+## Coding Agents
+
+This repository includes explicit execution guidance for coding agents.
+
+- **Claude Code:** start with [`CLAUDE.md`](CLAUDE.md)
+- **Codex / other agents:** start with [`AGENTS.md`](AGENTS.md)
+- **Milestone execution plan:** [`docs/CODING-AGENT-IMPLEMENTATION.md`](docs/CODING-AGENT-IMPLEMENTATION.md)
+
+Coding agents should preserve the documented domain boundaries, RLS/authorization model, evidence provenance rules, deterministic matching model, provider-adapter boundaries, and the distinction between verified facts and AI interpretation.
+
 ## Repository Layout
 
 ```text
@@ -107,6 +117,9 @@ The initial migration at `supabase/migrations/20260831_001_core_marketplace.sql`
 - [ICM + OKF Context & Knowledge Architecture](docs/ICM-OKF.md)
 
 ### Implementation
+- [Claude Code Instructions](CLAUDE.md)
+- [Universal Coding Agent Instructions](AGENTS.md)
+- [Coding Agent Technical Implementation](docs/CODING-AGENT-IMPLEMENTATION.md)
 - [Implementation Blueprint](docs/IMPLEMENTATION-BLUEPRINT.md)
 - [Application Database Schema](docs/DATABASE-SCHEMA.md)
 - [API Roadmap](docs/API-ROADMAP.md)
