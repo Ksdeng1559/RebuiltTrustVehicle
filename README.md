@@ -1,34 +1,51 @@
 # RebuiltTrustVehicle
 
-A trust-first marketplace and operating platform for rebuilt-status vehicles in British Columbia.
+A trust-first marketplace, buyer network, and transaction platform for rebuilt-status vehicles in British Columbia.
 
 ## Mission
 
-Create a safer, more transparent market for ICBC rebuilt vehicles by combining verified vehicle information, controlled seller access, warranty options, financing pathways, standardized disclosure, AI-assisted buyer engagement, interpretive context, and portable institutional knowledge.
+Create a safer, more transparent and more liquid market for ICBC rebuilt vehicles by connecting verified supply with structured buyer demand, while integrating warranty, financing, standardized disclosure, specialist evidence, AI-assisted sales, and portable institutional knowledge.
 
 ## Core Model
 
-RebuiltTrustVehicle is designed around six trust layers:
+RebuiltTrustVehicle is designed around seven trust and transaction layers:
 
-1. **Verified Sellers** — authorized used-car dealers form the primary seller network.
-2. **Private Seller Network** — individuals may participate under tighter transaction and volume rules.
-3. **Vehicle Trust Record** — VIN, rebuilt status, inspection evidence, disclosure, repair history, and listing evidence are tied to the vehicle record.
-4. **Transaction Protection** — eligible warranty, financing, documentation, and risk controls are integrated into the buying journey.
-5. **AI Engagement Layer** — a website Buyer Concierge, in-house AI Sales Agent, and AI DM Response Agent help buyers understand vehicles, qualify demand, follow up leads, and route sensitive decisions to humans.
-6. **ICM + OKF Knowledge Layer** — Interpretive Context Methodology assembles the right task-specific context for agents; the Open Knowledge Framework stores approved, linked, provenance-aware knowledge for reuse across the platform.
+1. **Authorized Dealer Network** — approved used-car dealers form the primary commercial seller and inventory network.
+2. **Private Buyer Network** — consumers create structured vehicle-buying profiles so the platform can match demand to current and incoming rebuilt inventory.
+3. **Private Seller Network** — individuals may introduce limited-volume inventory under tighter identity, ownership, disclosure, and transaction controls.
+4. **Vehicle Trust Record** — VIN, rebuilt status, inspection evidence, repair history, disclosure, specialist evidence, warranty state, and listing evidence are tied to the vehicle record.
+5. **Transaction Protection** — eligible warranty, financing, documentation, inspections, and risk controls are integrated into the buying journey.
+6. **AI Engagement & Matching Layer** — a Buyer Concierge, in-house AI Sales Agent, AI DM Response Agent, and buyer-to-inventory matching engine qualify demand, recommend vehicles, follow up leads, and route consequential decisions to humans.
+7. **ICM + OKF Knowledge Layer** — Interpretive Context Methodology assembles task-specific context for agents; the Open Knowledge Framework stores approved, linked, provenance-aware knowledge for reuse across the platform.
 
 ## Current Commercial Direction
 
 - Primary market: British Columbia, Canada
-- Vehicle type: ICBC rebuilt-status vehicles
-- Primary sellers: authorized used-car dealers
-- Secondary channel: private sellers / small-volume buyers
-- Warranty direction: Lubrico Warranty, subject to vehicle eligibility and contract confirmation
-- Financing: integrated vehicle-financing workflow
-- AI engagement: website chatbot, internal sales agent, and DM response agent
+- Vehicle type: ICBC rebuilt-status vehicles, including newer late-model vehicles, EVs and rebuilt Teslas
+- Primary supply: authorized used-car dealers
+- Secondary supply: private sellers under controlled limits
+- Demand network: private buyers seeking rebuilt vehicles for personal use
+- Buyer demand model: structured vehicle-buying profiles, saved demand, alerts, and AI matching
+- Warranty direction: Lubrico Warranty, subject to VIN eligibility and contract confirmation
+- Financing: integrated vehicle-financing workflow through participating brokers/lenders
+- Specialist layer: rebuild, inspection, Tesla/EV and other technical partners where appropriate
+- AI engagement: website concierge, internal sales agent, DM response agent, and inventory matching
 - Context architecture: ICM-based selective context assembly and human-gated workflows
 - Knowledge architecture: OKF-based portable knowledge, provenance, lifecycle, and reusable SOPs/playbooks
-- Platform objective: increase buyer confidence, dealer conversion, response speed, institutional learning, and liquidity for rebuilt vehicles
+- Platform objective: increase buyer confidence, dealer conversion, response speed, transaction velocity, institutional learning, and liquidity for rebuilt vehicles
+
+## Marketplace Structure
+
+### Supply
+Authorized Dealers + Private Sellers + Rebuild / Inspection / EV Specialists
+
+### Platform
+RebuiltTrustVehicle = Marketplace + Trust Record + Buyer Demand + Financing + Warranty + AI + Transaction Infrastructure
+
+### Demand
+Private Buyer Network
+
+The strategic model is therefore not only **vehicle listing → wait for buyer**. It also supports **buyer joins → defines desired vehicle → AI matches current or incoming inventory → dealer receives qualified opportunity**.
 
 ## Project Wiki
 
@@ -36,6 +53,7 @@ RebuiltTrustVehicle is designed around six trust layers:
 - [Product Requirements Document](docs/PRD.md)
 - [Product Vision & Trust Model](docs/PRODUCT-VISION.md)
 - [User Roles & Access Model](docs/USER-ROLES.md)
+- [Private Buyer Network](docs/PRIVATE-BUYER-NETWORK.md)
 - [Marketplace Workflows](docs/MARKETPLACE-WORKFLOWS.md)
 - [AI Agent Layer](docs/AI-AGENTS.md)
 - [ICM + OKF Context & Knowledge Architecture](docs/ICM-OKF.md)
@@ -61,4 +79,4 @@ RebuiltTrustVehicle is designed around six trust layers:
 
 A rebuilt title should not be hidden or minimized. The platform should make the vehicle's rebuilt history explicit, understandable, evidence-backed, and commercially manageable.
 
-The product is therefore not simply a classifieds marketplace. It is a **trust, transaction, AI-assisted sales, context, and institutional knowledge infrastructure layer for rebuilt vehicles**.
+RebuiltTrustVehicle should become **trusted commerce infrastructure for rebuilt vehicles** by owning both sides of the marketplace: verified vehicle supply and structured buyer demand.
