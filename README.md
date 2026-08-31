@@ -49,7 +49,7 @@ The strategic model is therefore not only **vehicle listing → wait for buyer**
 
 ## Implementation Direction
 
-The first build should use a modular-monolith architecture with clear domain boundaries:
+The first build uses a modular-monolith architecture with clear domain boundaries:
 
 - **Web:** Vite + React + TypeScript
 - **Identity:** Clerk + application-level roles/organization membership
@@ -63,6 +63,37 @@ The first build should use a modular-monolith architecture with clear domain bou
 The MVP north-star loop is:
 
 **Approved dealer inventory → VIN trust record → Private Buyer demand → explainable match → inquiry/opportunity → financing/warranty handoff → appointment → transaction.**
+
+## Repository Layout
+
+```text
+apps/
+  web/       React/Vite customer and dealer experience
+  api/       API and integration boundary
+  worker/    matching, notifications and async jobs
+supabase/
+  migrations/ database schema migrations
+docs/        product, architecture and operating documentation
+```
+
+## Local Development
+
+Prerequisites: Node.js 22+, pnpm, and access to the configured Clerk/Supabase environments.
+
+```bash
+cp .env.example .env
+pnpm install
+pnpm dev
+```
+
+Default local endpoints:
+
+- Web: Vite development URL
+- API: `http://localhost:4000`
+- API health: `GET /health`
+- API index: `GET /api/v1`
+
+The initial migration at `supabase/migrations/20260831_001_core_marketplace.sql` creates the first marketplace entities for users, organizations, seller profiles, VIN-based vehicles, listings, vehicle evidence, Private Buyer demand profiles, explainable matches, and inquiries.
 
 ## Project Wiki
 
