@@ -4,7 +4,17 @@
 
 RebuiltTrustVehicle should include an in-house AI engagement layer that improves response speed, lead qualification, buyer education, dealer conversion, and follow-up while preserving human oversight for regulated, contractual, financing, warranty, pricing, and dispute-sensitive decisions.
 
-The recommended design is three cooperating agents with shared access to the same approved knowledge and CRM context.
+The recommended design is three cooperating agents with shared access to the same approved knowledge, CRM context, Interpretive Context Methodology (ICM), and Open Knowledge Framework (OKF).
+
+## Operating Model
+
+The agents should not simply receive a large prompt or full conversation history.
+
+For every material task:
+
+Trigger / Message → ICM Context Assembly → Agent Role → Tool / Knowledge Use → Verification → Response or Human Approval → CRM / Audit → Outcome Capture → Candidate OKF Learning
+
+ICM determines the smallest correct context required for the current task. OKF provides approved, linked, reusable knowledge. Drafts, inferred conclusions, and raw chat history do not automatically become authoritative knowledge.
 
 ## 1. Website Chatbot — Buyer Concierge
 
@@ -15,7 +25,7 @@ A public-facing conversational assistant embedded in the marketplace.
 - Answer questions about rebuilt-status vehicles and how the platform works.
 - Explain the Vehicle Trust Record and available evidence.
 - Help buyers search and compare inventory.
-- Explain the difference between verified facts, seller disclosures, third-party assessments, and platform-derived trust status.
+- Explain the difference between verified facts, seller disclosures, third-party assessments, platform-derived trust status, and AI-generated interpretation.
 - Surface warranty eligibility status without representing it as issued coverage.
 - Explain financing pathways without making approval promises.
 - Capture contact information with consent.
@@ -23,11 +33,25 @@ A public-facing conversational assistant embedded in the marketplace.
 - Schedule or request contact with an authorized dealer or platform representative.
 - Escalate complex, sensitive, or uncertain questions to a human.
 
+### ICM context packet
+The Buyer Concierge should normally receive only the relevant:
+- buyer identity / intent where known;
+- current VIN or listing;
+- verified vehicle facts;
+- seller disclosures;
+- inspection evidence;
+- approved platform FAQ;
+- current warranty status;
+- current financing pathway status;
+- dealer organization context;
+- consent state;
+- applicable guardrails.
+
 ### Useful tools
 - inventory search;
 - vehicle detail retrieval;
 - trust-record retrieval;
-- FAQ/knowledge retrieval;
+- approved OKF knowledge retrieval;
 - lead creation;
 - appointment/request creation;
 - conversation logging.
@@ -50,6 +74,19 @@ An internal sales-development and conversion agent that works across qualified l
 - Create sales tasks and reminders.
 - Maintain CRM summaries and lead stage recommendations.
 
+### ICM context packet
+The Sales Agent should normally receive:
+- buyer profile and consent;
+- current lead stage;
+- purchase intent and timing;
+- prior relevant CRM activity;
+- shortlisted vehicles;
+- dealer pricing authority and sales rules;
+- financing / warranty workflow state;
+- approved sales SOPs and playbooks from OKF;
+- unresolved qualification questions;
+- escalation rules.
+
 ### Suggested lead stages
 New → Engaged → Qualified → Vehicle Matched → Test Drive / Appointment → Financing / Warranty → Negotiation → Sold → Follow-up.
 
@@ -61,7 +98,8 @@ The AI Sales Agent should not independently:
 - state that warranty coverage exists before confirmed issuance;
 - provide legal or insurance advice;
 - hide or minimize rebuilt-title status;
-- change verified vehicle facts without an auditable source.
+- change verified vehicle facts without an auditable source;
+- promote an inferred sales conclusion into approved OKF knowledge without validation.
 
 ## 3. AI DM Response Agent
 
@@ -82,6 +120,17 @@ Potential channels include Instagram, Facebook Messenger, WhatsApp, website mess
 - Create/update the CRM conversation and lead record.
 - Escalate low-confidence, complaint, dispute, legal, pricing-exception, financing-decision, or warranty-coverage conversations to a human.
 
+### ICM context packet
+The DM agent should normally receive:
+- channel and message context;
+- referenced listing or VIN;
+- known buyer identity and consent;
+- approved channel response rules;
+- verified vehicle facts;
+- approved FAQs and playbooks;
+- dealer routing information;
+- escalation conditions.
+
 ### DM response modes
 1. **Auto-answer** — low-risk factual questions backed by approved data.
 2. **Draft-for-approval** — pricing exceptions, unusual vehicle questions, sensitive claims, or low-confidence answers.
@@ -93,11 +142,13 @@ All three agents should use a shared orchestration and policy layer rather than 
 
 Recommended flow:
 
-Channel / Website → Conversation Gateway → AI Orchestrator → Policy & Permission Layer → Tools / Knowledge / CRM → Response → Audit Log
+Channel / Website → Conversation Gateway → AI Orchestrator → ICM Context Service → Policy & Permission Layer → Tools / OKF / CRM → Verification → Response → Audit Log
 
 Shared services:
 - model router;
-- retrieval/knowledge service;
+- ICM context service;
+- OKF knowledge service;
+- retrieval service;
 - inventory service;
 - vehicle trust-record service;
 - CRM/lead service;
@@ -106,6 +157,7 @@ Shared services:
 - warranty adapter;
 - financing adapter;
 - appointment/task service;
+- verification service;
 - audit/event service;
 - human handoff queue.
 
@@ -116,11 +168,28 @@ Agents should answer from the following hierarchy:
 1. Verified vehicle facts and authoritative platform records.
 2. Approved dealer inventory and pricing data.
 3. Confirmed warranty or financing partner status.
-4. Approved platform policies and FAQs.
+4. Approved OKF platform policies, SOPs, playbooks, and FAQs.
 5. Seller disclosures, clearly identified as seller-supplied.
-6. General model knowledge only where it does not conflict with platform data.
+6. AI-generated interpretation based on the above, clearly non-authoritative where appropriate.
+7. General model knowledge only where it does not conflict with platform data.
 
 If the system cannot establish a sufficiently reliable answer, it should say so and escalate rather than inventing details.
+
+## Artifact-Based Handoffs
+
+Material handoffs between agents or from AI to humans should use structured artifacts rather than only conversational messages.
+
+A handoff should capture:
+- workflow run and task;
+- source and destination role;
+- objective;
+- relevant VIN / lead / dealer;
+- evidence references;
+- findings;
+- unresolved questions;
+- confidence;
+- recommended next action;
+- verification / human approval state where applicable.
 
 ## CRM Requirements
 
@@ -135,7 +204,28 @@ Every meaningful conversation should be associated with:
 - next action;
 - owner / human assignee;
 - AI confidence / escalation reason;
-- consent and communication preference where required.
+- consent and communication preference where required;
+- references to material context or handoff artifacts where useful.
+
+## OKF Knowledge Lifecycle
+
+Agents do not write directly into approved knowledge by default.
+
+The lifecycle is:
+
+Source or outcome → Draft concept / candidate lesson → Verification → Human review where material → Publish to OKF → Update knowledge log / lifecycle state.
+
+Reusable knowledge may include:
+- buyer objection patterns;
+- approved answers;
+- dealer sales SOPs;
+- warranty explanation playbooks;
+- financing routing rules;
+- human escalation procedures;
+- vehicle trust education content;
+- validated sales lessons.
+
+A material fact should have one authoritative home and be linked rather than copied across prompts.
 
 ## Agent Identity and Transparency
 
@@ -151,7 +241,9 @@ Human review or takeover is required for:
 - legal, regulatory, insurance, or liability questions;
 - vehicle safety concerns;
 - requests involving sensitive personal or financial information beyond the approved workflow;
-- low-confidence answers involving material purchase decisions.
+- low-confidence answers involving material purchase decisions;
+- changes to authoritative facts or policies;
+- promotion of material inferred knowledge into approved OKF.
 
 ## Recommended Metrics
 
@@ -167,6 +259,10 @@ Human review or takeover is required for:
 - stale-lead reactivation rate;
 - response accuracy / QA score;
 - complaint and correction rate;
+- context retrieval accuracy;
+- percentage of material responses backed by authoritative sources;
+- knowledge reuse rate;
+- approved knowledge correction / staleness rate;
 - revenue influenced by AI-assisted conversations.
 
 ## MVP Scope
@@ -176,6 +272,8 @@ For the first release:
 ### Phase A
 - website Buyer Concierge;
 - inventory and trust-record Q&A;
+- ICM context packet generation;
+- approved OKF FAQ / policy retrieval;
 - lead capture;
 - CRM conversation logging;
 - human handoff.
@@ -184,15 +282,22 @@ For the first release:
 - internal AI Sales Agent;
 - qualification and lead scoring;
 - next-best-action recommendations;
-- automated follow-up under dealer-configured rules.
+- approved sales SOP/playbook retrieval;
+- automated follow-up under dealer-configured rules;
+- structured artifact handoffs.
 
 ### Phase C
 - AI DM Response Agent;
 - social/messaging channel adapters;
 - unified conversation inbox;
 - cross-channel identity matching;
-- configurable auto-answer, draft, and handoff policies.
+- configurable auto-answer, draft, and handoff policies;
+- validated outcome-to-knowledge learning loop.
 
 ## Product Principle
 
 AI should accelerate trust and sales without weakening disclosure. Every agent is designed to make rebuilt-vehicle information easier to understand, move qualified buyers toward the right vehicle, and route high-risk decisions to accountable humans.
+
+The agents should **interpret the right context for the task, use approved knowledge, create auditable handoffs, and turn only validated outcomes into institutional knowledge**.
+
+See [ICM + OKF Context & Knowledge Architecture](ICM-OKF.md) for the full methodology.
